@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     {% extends "base.html" %}
@@ -12,7 +13,9 @@
 
     <h1>Welcome to my website</h1>
 
-    <a href="/create">Create Post</a>
+    <a href="/post">
+        <button>Go to Post Page</button>
+    </a>
 
     {% endblock %}
 </body>
