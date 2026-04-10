@@ -6,7 +6,15 @@
     <title></title>
 </head>
 <body>
-    <h1>This is the post page</h1>
+    <h1>Published Posts</h1>
+
+    {% for post in posts %}
+
+    <p>{{ post[0] }}</p>
+
+    <hr>
+
+    {% endfor %}
 
     <a href="/">Back to home</a>
 </body>
