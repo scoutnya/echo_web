@@ -8,7 +8,7 @@ A simple Flask website with:
 - sub pages
 
 Tech stack:
-Python
+Python 3.13
 Flask
 HTML
 CSS
