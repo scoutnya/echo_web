@@ -4,8 +4,15 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+
+    <nav class="navbar">
+        <a href="/logout">Logout</a>
+        <a href="/">Back to home</a>
+    </nav>
+
     <h1>Pending Posts</h1>
 
     {% for post in posts %}

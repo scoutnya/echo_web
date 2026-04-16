@@ -1,12 +1,14 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, session
+from dotenv import load_dotenv
 import sqlite3
 import random
+import os
 
 main = Blueprint('main', __name__, template_folder='../templates')
 
 @main.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", admin=session.get("admin"))
 
 @main.route("/submit", methods=["POST"])
 def submit():
@@ -45,14 +47,17 @@ def posts():
     conn = sqlite3.connect("database.db")
     cur = conn.cursor()
 
-    cur.execute("SELECT content FROM posts WHERE approved=1")
+    cur.execute("SELECT id, content FROM posts WHERE approved=1")
 
     posts = cur.fetchall()
 
-    return render_template("posts.html", posts=posts)
+    return render_template("posts.html", posts=posts, admin=session.get("admin"))
 
 @main.route("/admin")
 def admin():
+
+    if not session.get("admin"):
+        return redirect("/admin_login")
 
     conn = sqlite3.connect("database.db")
     cur = conn.cursor()
@@ -64,6 +69,19 @@ def admin():
     conn.close()
 
     return render_template("admin.html", posts=posts)
+
+@main.route("/admin_login", methods=["GET","POST"])
+def admin_login():
+
+    if request.method == "POST":
+
+        password = request.form["password"]
+
+        if password == os.getenv("ADMIN_PASSWORD"):
+            session["admin"] = True
+            return redirect("/admin")
+
+    return render_template("admin_login.html")
 
 @main.route("/approve/<int:id>")
 def approve(id):
@@ -81,6 +99,9 @@ def approve(id):
 @main.route("/delete/<int:id>")
 def delete_post(id):
 
+    if not session.get("admin"):
+        return redirect("/")
+
     conn = sqlite3.connect("database.db")
     cur = conn.cursor()
 
@@ -90,3 +111,10 @@ def delete_post(id):
     conn.close()
 
     return redirect("/admin")
+
+@main.route("/logout")
+def logout():
+
+    session.pop("admin", None)
+
+    return redirect("/")

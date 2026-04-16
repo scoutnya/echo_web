@@ -13,27 +13,35 @@
 
     <h1>Welcome to my website</h1>
 
-    <form action="/submit" method="POST">
+    <form action="/submit" method="POST" onsubmit="return checkPost()">
 
         <textarea name="content" placeholder="Write your post"></textarea>
 
         <br>
 
-        <button type="submit">Submit</button>
+        <button class="main_page" type="submit">Submit</button>
 
     </form>
 
     <hr>
 
-    <button onclick="getRandomPost()">Show Random Post</button>
+    <button class="main_page" onclick="getRandomPost()">Show Random Post</button>
 
     <div id="randomPost"></div>
 
     <p></p>
 
     <a href="/posts">
-        <button>Go to Post Page</button>
+        <button class="main_page">Go to Post Page</button>
     </a>
+
+    <p></p>
+
+    {% if admin %}
+    <a href="/admin">
+        <button class="main_page">Go to Admin Panel</button>
+    </a>
+    {% endif %}
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 

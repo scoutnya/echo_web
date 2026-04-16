@@ -9,4 +9,15 @@ function getRandomPost() {
 
         })
 
-}// JavaScript source code
+}
+function checkPost() {
+
+    let text = document.getElementById("content").value
+
+    if (text.trim() === "") {
+        alert("Please enter something")
+        return false
+    }
+
+    return true
+}

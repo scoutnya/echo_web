@@ -4,13 +4,24 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <h1>Published Posts</h1>
 
     {% for post in posts %}
 
-    <p>{{ post[0] }}</p>
+    <p>{{ post[1] }}</p>
+
+    {% if admin %}
+
+    <form action="/delete/{{ post[0] }}">
+        <button type="submit" onclick="return confirm('Are you sure?')">
+            Delete
+        </button>
+    </form>
+
+    {% endif %}
 
     <hr>
 
