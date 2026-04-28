@@ -1,14 +1,106 @@
 ﻿body {
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("/static/images/lowlight.jpg");
+    background-size: cover;
+    background-position: center;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
-.main_page {
+.left {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+.middle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.right {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+.main_page_submit {
     background-color: blue;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
 }
+.main_page_random {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+.main_page_post {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+.post_page_back_to_home {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+}
+.post_box {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+}
+.hidden {
+    display: none;
+}
+.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
 .navbar {
     display: flex;
     align-items: center;
     gap: 10px;
+}
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.random_post_submit {
+    display: block;
+    margin: 20px auto; /* 居中 */
+
+    width: 90%; /* 接近container宽度 */
+    max-width: 700px; /* 防止太宽 */
+
+    height: 120px; /* 高度 */
+
+    padding: 10px; /* 内边距 */
+
+    resize: none; /* 禁止拖动大小 */
+
+    border-radius: 8px; /* 圆角 */
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+.random_post_submit:focus {
+    outline: none;
+    border-color: #4a90e2;
 }

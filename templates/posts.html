@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
+    {% extends "base.html" %}
+
+    {% block content %}
+
     <h1>Published Posts</h1>
 
     {% for post in posts %}
@@ -26,7 +30,12 @@
     <hr>
 
     {% endfor %}
+    <div class="left">
+        <a href="/">
+            <button class="post_page_back_to_home">Back to home</button>
+        </a>
+    </div>
 
-    <a href="/">Back to home</a>
+    {% endblock %}
 </body>
 </html>
