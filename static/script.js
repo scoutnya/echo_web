@@ -1,11 +1,34 @@
-//console.log("JS loaded")
+let firstTime = true;
 function getRandomPost() {
+
+    const box = document.getElementById("randomPost");
 
     fetch("/random")
         .then(response => response.json())
         .then(data => {
 
-            document.getElementById("randomPost").innerText = data.content
+            if (firstTime) {
+
+                box.classList.remove("hidden"); 
+
+                void box.offsetWidth;
+
+                box.innerHTML = data.content;
+
+                box.classList.add("show");
+
+                firstTime = false;
+
+            } else {
+
+                box.classList.remove("show");
+
+                void box.offsetWidth;
+
+                box.innerHTML = data.content;
+
+                box.classList.add("show");
+            }
 
         })
 

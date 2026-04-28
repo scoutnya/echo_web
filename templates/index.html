@@ -11,40 +11,45 @@
 
     {% block content %}
 
-    <h1>Welcome to my website</h1>
+        <h1>Welcome to my website</h1>
+        
+        <form action="/submit" method="POST" onsubmit="return checkPost()">
 
-    <form action="/submit" method="POST" onsubmit="return checkPost()">
+            <textarea class="random_post_submit" id="content" name="content" placeholder="Write your post"></textarea>
 
-        <textarea id="content" name="content" placeholder="Write your post"></textarea>
+            <div class="right">
+                <button class="main_page_submit" type="submit">Submit</button>
+            </div>
 
+        </form>
+
+        <hr>
+        
+        <div class="middle">
+            <button class="main_page_random" onclick="getRandomPost()">Show Random Post</button>
+        </div>
+
+        <div class="post_box hidden" id="randomPost"></div>
+
+        <hr>
         <br>
+        
+        <div class="left">
+        <a href="/posts">
+            <button class="main_page_post">Go to Post Page</button>
+        </a>
+        </div>
 
-        <button class="main_page" type="submit">Submit</button>
+        <hr>
 
-    </form>
+        {% if admin %}
+        <a href="/admin">
+            <button>Go to Admin Panel</button>
+        </a>
+        {% endif %}
 
-    <hr>
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
 
-    <button class="main_page" onclick="getRandomPost()">Show Random Post</button>
-
-    <div id="randomPost"></div>
-
-    <p></p>
-
-    <a href="/posts">
-        <button class="main_page">Go to Post Page</button>
-    </a>
-
-    <p></p>
-
-    {% if admin %}
-    <a href="/admin">
-        <button class="main_page">Go to Admin Panel</button>
-    </a>
-    {% endif %}
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-
-    {% endblock %}
+        {% endblock %}
 </body>
 </html>
